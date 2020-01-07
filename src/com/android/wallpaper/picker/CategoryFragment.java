@@ -233,6 +233,7 @@ public class CategoryFragment extends ToolbarFragment {
         }
         // Not add existing category to category list
         if (mCategories.indexOf(category) >= 0) {
+            updateCategory(category);
             return;
         }
 
@@ -354,7 +355,8 @@ public class CategoryFragment extends ToolbarFragment {
     }
 
     private int getNumColumns() {
-        return TileSizeCalculator.getNumCategoryColumns(getActivity());
+        Activity activity = getActivity();
+        return activity == null ? 0 : TileSizeCalculator.getNumCategoryColumns(activity);
     }
 
     /**
